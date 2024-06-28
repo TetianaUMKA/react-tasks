@@ -7,7 +7,10 @@ export default function OfficerProfile({
       <p>Rank: {rank}</p>
       <p>Age: {age}</p>
       <p>Spec: {spec}</p>
-      <p>Status: {status}</p>
+      <p>
+        Status:{" "}
+        {status === "Active" ? "available for hire" : "not available for hire"}
+      </p>
     </div>
   );
 }
