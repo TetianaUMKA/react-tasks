@@ -1,6 +1,8 @@
 import AppBar from "../AppBar/AppBar";
 import OfficerProfile from "../OfficerProfile/OfficerProfile";
+import OfficerList from "../OfficerList/OfficerList";
 import Unit from "../Unit/Unit";
+import officers from "../../officers.json";
 
 const firstOfficer = {
   id: 1,
@@ -39,6 +41,7 @@ export default function App() {
 
       <AppBar />
       <Unit unitName="the falcon" numberOfficers={9} mission="defense" />
+      <OfficerList items={officers} />
       <OfficerProfile officer={firstOfficer} />
       <OfficerProfile officer={secondOfficer} />
     </div>
