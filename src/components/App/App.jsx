@@ -7,6 +7,7 @@ import Unit from "../Unit/Unit";
 import Form from "../UserForm/UserForm";
 import { useState } from "react";
 import ControlledInput from "../ControlledInput/ControlledInput";
+import GitHubApp from "../GitHubApp/GitHubApp";
 
 const firstOfficer = {
   id: 1,
@@ -60,6 +61,8 @@ export default function App() {
       {/* controlled element*/}
       <ControlledInput value={text} onUpdate={handleTextChange} />
       <p>{text}</p>
+
+      <GitHubApp />
     </div>
   );
 }
