@@ -12,6 +12,8 @@ export default function GitHubApp() {
   // {} 👉 null
 
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   // way 1
   // const handleSubmit = async (values, actions) => {
@@ -27,9 +29,19 @@ export default function GitHubApp() {
 
   //way 2 (output the function with axios into another file with name github-api.js)
   const handleSubmit = async (values, actions) => {
-    const fetchedUser = await fetchUser(values.username);
-    setUser(fetchedUser);
-    actions.resetForm();
+    try {
+      setLoading(true);
+      setUser(null); //if it is necessary for cleaning previous data
+      setError(false);
+      const fetchedUser = await fetchUser(values.username);
+      setUser(fetchedUser);
+      actions.resetForm();
+    } catch (error) {
+      console.log("HTTPS ERROR");
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,7 +53,8 @@ export default function GitHubApp() {
           <button type="submit">Search</button>
         </Form>
       </Formik>
-
+      {loading && <b>Loading user data, please wait...</b>}
+      {error && <b>Oops... there was an error, please try again</b>}
       {user && (
         <div>
           <img src={user.avatar_url} alt={user.name} />
