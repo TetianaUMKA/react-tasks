@@ -6,7 +6,12 @@ export default function ControlledInput({ value, onUpdate }) {
   };
   return (
     <div className={css.container}>
-      <input type="text" value={value} onChange={handleChange} />
+      <input
+        type="text"
+        name="neededData"
+        value={value}
+        onChange={handleChange}
+      />
     </div>
   );
 }
